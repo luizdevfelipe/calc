@@ -53,10 +53,12 @@ ul#fecha li#X:hover{
 #menu-ico{
     position: absolute;
     font-size: 1.4em;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    padding: 7px 0px;
     border-radius: 4px;
-    transform: translate(10px, -39px);
+    transform: translate(10px, -38px);
 }
 
 #menu-ico:hover{
@@ -72,7 +74,7 @@ p#mode{
 
 #fixedOnTop{
     position: absolute;
-    transform: translate(154px, -35px);
+    transform: translate(152px, -35px);
     padding: 9px;
     border-radius: 4px;
 }
@@ -130,4 +132,44 @@ div.macro li{
 
 div.macro li:hover{
     background-color: #353535;
+}
+
+div.macro li.desativo{
+    color: #7e7878;
+}
+
+div.macro li.desativo:hover{
+    background-color: #251F21;
+}
+
+div.teclas table{
+    position: absolute;
+
+
+    transform: translate(2px, 147px);
+}
+
+div.teclas tr{
+    height: 49.6px;
+}
+
+div.teclas td {
+    width: 84.2px;
+    border-radius: 6px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.teclas td.escuro{
+    background-color: #303030;
+
+}
+
+div.teclas td.cinza{
+    background-color: #3a3a3a;
+}
+
+div.teclas td.igual{
+    background-color: rgb(99, 99, 99);
+    color: black;
 }
