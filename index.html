@@ -6,6 +6,7 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -16,7 +17,7 @@
             <ul id="fecha">
                 <li>-</li>
                 <li><i class="bi bi-square" style="font-size: 0.6em;"></i></li>
-                <li id="X"><i class="bi bi-x-lg"  style="font-size: 0.7em;"></i></li>
+                <li id="X" onclick="window.close()"><i class="bi bi-x-lg" style="font-size: 0.7em;"></i></li>
             </ul>
         </div>
 
@@ -24,18 +25,28 @@
             <!-- Menu Standard e ícone do histórico -->
             <i id="menu-ico" class="bi bi-list"></i>
             <p id="mode">Standard</p>
+            <img id="fixedOnTop" src="images/fixedOnTop.png" alt="Ícone fixado no topo">
+            <img id="historic" src="images/historic.png" alt="Ícone de histórico">
         </div>
         
         <div class="historic">
-            <!-- Histórico das operações -->
+            <!-- Histórico de Operações -->
+            3x3=
         </div>
-
         <div class="result">
             <!-- Resultado -->
+            0
         </div>
 
         <div class="macro">
-            <!-- Teclas de Macro -->
+            <ul>
+                <li>MC</li>
+                <li>MR</li>
+                <li>M+</li>
+                <li>M-</li>
+                <li>MS</li>
+                <li>M~</li>
+            </ul>
         </div>
 
         <div class="teclas">

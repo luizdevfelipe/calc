@@ -3,6 +3,7 @@
 *{
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
@@ -35,7 +36,7 @@ ul#fecha{
 
 ul#fecha li{
     width: 44px;
-    height: 15px;
+    height: 35px;
     text-align: center;
     padding: 10px 0px;
 }
@@ -52,9 +53,8 @@ ul#fecha li#X:hover{
 #menu-ico{
     position: absolute;
     font-size: 1.4em;
-    width: 22px;
-    height: 22px;
-    padding: 8px;
+    width: 32px;
+    height: 32px;
     border-radius: 4px;
     transform: translate(10px, -39px);
 }
@@ -65,7 +65,69 @@ ul#fecha li#X:hover{
 
 p#mode{
     position: absolute;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.2em;
-    transform: translate(50px, -30px);
+    transform: translate(51px, -30px);
+}
+
+#fixedOnTop{
+    position: absolute;
+    transform: translate(154px, -35px);
+    padding: 9px;
+    border-radius: 4px;
+}
+
+#fixedOnTop:hover{
+    background-color: #353535;
+}
+
+#historic{
+    position: absolute;
+    transform: translate(310px, -37px);
+    padding: 8px;
+    border-radius: 4px;
+}
+
+#historic:hover{
+    background-color: #353535;
+}
+
+div.historic {
+    position: absolute;
+    width: 330px;
+    color: rgb(155, 155, 155);
+    letter-spacing: 0.25em;
+    text-align: right;
+    font-size: 0.95em;
+    transform: translate(10px, 10px);
+}
+
+.result{
+    position: absolute;
+    font-size: 2.5em;
+    text-align: right;
+    width: 330px;
+    transform: translate(10px, 45px);
+}
+
+div.macro ul{
+    position: absolute;
+    margin: 0px;
+    width: 330px;
+    columns: 6;
+    list-style: none;
+    list-style-position: inside;
+    transform: translate(0px, 110px);
+}
+
+div.macro li{
+    width: 55px;
+    height: 35px;
+    text-align: center;
+    padding: 8px 0px;
+    border-radius: 5px;
+}
+
+div.macro li:hover{
+    background-color: #353535;
 }
