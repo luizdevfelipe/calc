@@ -33,9 +33,8 @@
             <!-- Histórico de Operações -->
             3x3=
         </div>
-        <div class="result">
-            <!-- Resultado -->
-            9
+        <div id="resultado" class="result">0
+            <!-- Resultado -->            
         </div>
 
         <div class="macro">
@@ -55,7 +54,7 @@
                 <tr>
                     <td class="escuro">%</td>
                     <td class="escuro">CE</td>
-                    <td class="escuro">C</td>
+                    <td class="escuro" onclick="valor('apagar')">C</td>
                     <td class="escuro"><img src="images/del.png" alt="Botão apagar"></td>
                 </tr>   
                 <tr>
@@ -65,26 +64,26 @@
                     <td class="escuro"><img src="images/division.png" alt="Divisão"></td>
                 </tr>
                 <tr>
-                    <td class="cinza">7</td>
-                    <td class="cinza">8</td>
-                    <td class="cinza">9</td>
+                    <td class="cinza" onclick="valor(7)">7</td>
+                    <td class="cinza" onclick="valor(8)">8</td>
+                    <td class="cinza" onclick="valor(9)">9</td>
                     <td class="escuro">x</i></td>
                 </tr>
                 <tr>
-                    <td class="cinza">4</td>
-                    <td class="cinza">5</td>
-                    <td class="cinza">6</td>
+                    <td class="cinza" onclick="valor(4)">4</td>
+                    <td class="cinza" onclick="valor(5)">5</td>
+                    <td class="cinza" onclick="valor(6)">6</td>
                     <td class="escuro">&#x2013;</td>
                 </tr>
                 <tr>
-                    <td class="cinza">1</td>
-                    <td class="cinza">2</td>
-                    <td class="cinza">3</td>
+                    <td class="cinza" onclick="valor(1)">1</td>
+                    <td class="cinza" onclick="valor(2)">2</td>
+                    <td class="cinza" onclick="valor(3)">3</td>
                     <td class="escuro">+</td>
                 </tr>
                 <tr>
                     <td class="cinza">+/-</td>
-                    <td class="cinza">0</td>
+                    <td class="cinza" onclick="valor(0)">0</td>
                     <td class="cinza">.</td>
                     <td class="igual">=</td>
                 </tr>
