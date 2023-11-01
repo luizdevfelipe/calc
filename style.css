@@ -98,7 +98,6 @@ div.historic {
     position: absolute;
     width: 330px;
     color: rgb(155, 155, 155);
-    letter-spacing: 0.25em;
     text-align: right;
     font-size: 0.95em;
     transform: translate(10px, 10px);

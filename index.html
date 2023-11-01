@@ -29,9 +29,8 @@
             <img id="historic" src="images/historic.png" alt="Ícone de histórico">
         </div>
         
-        <div class="historic">
-            <!-- Histórico de Operações -->
-            3x3=
+        <div id="historico" class="historic">
+            <!-- Histórico de Operações -->           
         </div>
         <div id="resultado" class="result">0
             <!-- Resultado -->            
@@ -53,39 +52,39 @@
             <table>
                 <tr>
                     <td class="escuro">%</td>
-                    <td class="escuro">CE</td>
-                    <td class="escuro" onclick="valor('apagar')">C</td>
+                    <td class="escuro" onclick="calculadora('apagar')">CE</td>
+                    <td class="escuro" onclick="calculadora('deletar')">C</td>
                     <td class="escuro"><img src="images/del.png" alt="Botão apagar"></td>
                 </tr>   
                 <tr>
                     <td class="escuro"><sup>1</sup>/x</td>
                     <td class="escuro">x<sup>2</sup></td>
                     <td class="escuro"><img src="images/square.png" alt="Raíz quadrada"></td>
-                    <td class="escuro"><img src="images/division.png" alt="Divisão"></td>
+                    <td class="escuro" onclick="calculadora('/')"><img src="images/division.png" alt="Divisão"></td>
                 </tr>
                 <tr>
-                    <td class="cinza" onclick="valor(7)">7</td>
-                    <td class="cinza" onclick="valor(8)">8</td>
-                    <td class="cinza" onclick="valor(9)">9</td>
-                    <td class="escuro">x</i></td>
+                    <td class="cinza" onclick="calculadora(7)">7</td>
+                    <td class="cinza" onclick="calculadora(8)">8</td>
+                    <td class="cinza" onclick="calculadora(9)">9</td>
+                    <td class="escuro" onclick="calculadora('*')">x</i></td>
                 </tr>
                 <tr>
-                    <td class="cinza" onclick="valor(4)">4</td>
-                    <td class="cinza" onclick="valor(5)">5</td>
-                    <td class="cinza" onclick="valor(6)">6</td>
-                    <td class="escuro">&#x2013;</td>
+                    <td class="cinza" onclick="calculadora(4)">4</td>
+                    <td class="cinza" onclick="calculadora(5)">5</td>
+                    <td class="cinza" onclick="calculadora(6)">6</td>
+                    <td class="escuro" onclick="calculadora('-')">&#x2013;</td>
                 </tr>
                 <tr>
-                    <td class="cinza" onclick="valor(1)">1</td>
-                    <td class="cinza" onclick="valor(2)">2</td>
-                    <td class="cinza" onclick="valor(3)">3</td>
-                    <td class="escuro">+</td>
+                    <td class="cinza" onclick="calculadora(1)">1</td>
+                    <td class="cinza" onclick="calculadora(2)">2</td>
+                    <td class="cinza" onclick="calculadora(3)">3</td>
+                    <td class="escuro" onclick="calculadora('+')">+</td>
                 </tr>
                 <tr>
                     <td class="cinza">+/-</td>
-                    <td class="cinza" onclick="valor(0)">0</td>
+                    <td class="cinza" onclick="calculadora(0)">0</td>
                     <td class="cinza">.</td>
-                    <td class="igual">=</td>
+                    <td class="igual" onclick="calculadora('=')">=</td>
                 </tr>
             </table>
         </div>
