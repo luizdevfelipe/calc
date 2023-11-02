@@ -2,6 +2,10 @@ resultado = document.getElementById('resultado')
 historico = document.getElementById('historico')
 cont = 0
 
+function fixedTOP(){
+    window.open("https://luizdevfelipe.github.io/calc/", '_blank', 'width=360px, height=570px')
+}
+
 function calculadora(x){
     // colocar virgula no valor conforme a quantidade de casas decimais    
     // arrumar botão CE e o botão que apaga somente o último caractere
@@ -16,8 +20,9 @@ function calculadora(x){
     else if (x == 'deletar'){
         resultado.innerHTML = 0
         historico.innerHTML = ''
-    } else if(x == '+' || x == '*' || x == '=' || x == '-' || x == '/' || x == 'sqrt'){
+    } else if(x == '+' || x == '*' || x == '=' || x == '-' || x == '/' || x == 'pot' || x == 'raiz' || x == '+-'){
         resultado.innerHTML += ''
+    
     } else if(cont == 1){
         resultado.innerHTML = '' + x
         cont = 0
@@ -62,11 +67,25 @@ function calculadora(x){
         operacao = 'div'
         cont = 1
     }
-    if (x == 'sqrt'){
+    if (x == 'pot'){
         historico.innerHTML =  `sqrt(${resultado.innerHTML})`
         n1 = Number(resultado.innerHTML)
-        resultado.innerHTML = n1 ** 2
+        resultado.innerHTML = n1 ** 2        
         operacao = 'pot'
+        cont = 1
+    }
+
+    if (x == 'raiz'){
+        historico.innerHTML =  `&#x221A;(${resultado.innerHTML})`
+        n1 = Number(resultado.innerHTML)
+        resultado.innerHTML = n1 ** (1/2)
+        operacao = 'raiz'
+        cont = 1
+    }
+
+    if(x == '+-'){        
+        n1 = Number(resultado.innerHTML)
+        resultado.innerHTML = n1 * -1        
         cont = 1
     }
 
@@ -93,17 +112,13 @@ function calculadora(x){
             varResult = n1 / n2
             cont = 2
         }        
-        if(operacao == 'pot'){            
+
+        if(operacao == 'pot' || operacao == 'raiz'){            
             if (cont == 1){
                 historico.innerHTML += ' ='
-                v = 0
-            }else{
-                historico.innerHTML = n1 ** 2
-            }
-            
-            cont = 2
-        }
-        
+                cont = 2  
+            }                                    
+        }        
         
         if(String(varResult).length > 16){            
             resultado.style.fontSize = '1.6em'

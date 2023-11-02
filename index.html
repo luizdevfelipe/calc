@@ -6,6 +6,7 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -25,7 +26,7 @@
             <!-- Menu Standard e ícone do histórico -->
             <i id="menu-ico" class="bi bi-list"></i>
             <p id="mode">Standard</p>
-            <img id="fixedOnTop" src="images/fixedOnTop.png" alt="Ícone fixado no topo">
+            <img id="fixedOnTop" src="images/fixedOnTop.png" alt="Ícone fixado no topo" onclick="fixedTOP()">
             <img id="historic" src="images/historic.png" alt="Ícone de histórico">
         </div>
         
@@ -58,8 +59,8 @@
                 </tr>   
                 <tr>
                     <td class="escuro"><sup>1</sup>/x</td>
-                    <td class="escuro" onclick="calculadora('sqrt')">x<sup>2</sup></td>
-                    <td class="escuro"><img src="images/square.png" alt="Raíz quadrada"></td>
+                    <td class="escuro" onclick="calculadora('pot')">x<sup>2</sup></td>
+                    <td class="escuro" onclick="calculadora('raiz')"><img src="images/square.png" alt="Raíz quadrada"></td>
                     <td class="escuro" onclick="calculadora('/')"><img src="images/division.png" alt="Divisão"></td>
                 </tr>
                 <tr>
@@ -81,7 +82,7 @@
                     <td class="escuro" onclick="calculadora('+')">+</td>
                 </tr>
                 <tr>
-                    <td class="cinza">+/-</td>
+                    <td class="cinza" onclick="calculadora('+-')">+/-</td>
                     <td class="cinza" onclick="calculadora(0)">0</td>
                     <td class="cinza">.</td>
                     <td class="igual" onclick="calculadora('=')">=</td>
