@@ -143,8 +143,6 @@ div.macro li.desativo:hover{
 
 div.teclas table{
     position: absolute;
-
-
     transform: translate(2px, 147px);
 }
 
