@@ -26,21 +26,37 @@ function calculadora(x){
     if (x == 'apagar'){
         resultado.innerHTML = 0
     } 
+
     if(x == 'm+'){
         macro = resultado.innerHTML        
         desativo.forEach(document => {
         document.style.color = 'white';
         })
         m = 1
+    } 
+    
+    if (x == 'mc' && m == 1){
+        desativo.forEach(document => {
+        document.style.color = '';
+        })
+        desativo.forEach(document => {
+        document.style.background = '';
+        })
+        historico.innerHTML = ''
+        macro = 0
+        m = 0
     }
+
     if(x == 'mr' && m == 1){
         resultado.innerHTML = macro
+    } else if(x == 'mr' && rasultado.innerHTML == 0){
+        resultado.innerHTML = 0
     }
     else if (x == 'deletar'){
         resultado.innerHTML = 0
         historico.innerHTML = ''
 
-    } else if(x == '+' || x == '*' || x == '=' || x == '-' || x == '/' || x == 'pot' || x == 'raiz' || x == '+-' || x == 'm+' || x == 'mr' || x == 'apagar'){
+    } else if(['+', '*', '=', '-', '/', 'pot', 'raiz', '+-', 'm+', 'mc', 'apagar', 'deletar'].includes(x)){
         resultado.innerHTML += ''    
     } 
     else if(cont == 1){
