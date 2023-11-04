@@ -1,9 +1,18 @@
 resultado = document.getElementById('resultado')
 historico = document.getElementById('historico')
+desativo = document.querySelectorAll('.desativo')
 cont = 0
-
+m = 0
 function fixedTOP(){
     window.open("https://luizdevfelipe.github.io/calc/", '_blank', 'width=360px, height=570px')
+}
+
+function fundoAtivo(x){    
+    if(m==1){ document.querySelector(`li#${x}.desativo`).style.background = '#353535' }
+}
+
+function fundoDesativo(x){    
+    if(m==1){ document.querySelector(`li#${x}.desativo`).style.background = '' }
 }
 
 function calculadora(x){
@@ -17,13 +26,24 @@ function calculadora(x){
     if (x == 'apagar'){
         resultado.innerHTML = 0
     } 
+    if(x == 'm+'){
+        macro = resultado.innerHTML        
+        desativo.forEach(document => {
+        document.style.color = 'white';
+        })
+        m = 1
+    }
+    if(x == 'mr' && m == 1){
+        resultado.innerHTML = macro
+    }
     else if (x == 'deletar'){
         resultado.innerHTML = 0
         historico.innerHTML = ''
-    } else if(x == '+' || x == '*' || x == '=' || x == '-' || x == '/' || x == 'pot' || x == 'raiz' || x == '+-'){
-        resultado.innerHTML += ''
-    
-    } else if(cont == 1){
+
+    } else if(x == '+' || x == '*' || x == '=' || x == '-' || x == '/' || x == 'pot' || x == 'raiz' || x == '+-' || x == 'm+' || x == 'mr' || x == 'apagar'){
+        resultado.innerHTML += ''    
+    } 
+    else if(cont == 1){
         resultado.innerHTML = '' + x
         cont = 0
     }else if(cont == 2){

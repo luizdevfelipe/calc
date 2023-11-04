@@ -39,12 +39,12 @@
 
         <div class="macro">
             <ul>
-                <li class="desativo">MC</li>
-                <li class="desativo">MR</li>
-                <li>M+</li>
+                <li id="um" class="desativo" onmouseenter="fundoAtivo('um')" onmouseleave="fundoDesativo('um')">MC</li>
+                <li id="dois" class="desativo" onmouseenter="fundoAtivo('dois')" onmouseleave="fundoDesativo('dois')" onclick="calculadora('mr')">MR</li>
+                <li onclick="calculadora('m+')">M+</li>
                 <li>M-</li>
                 <li>MS</li>
-                <li class="desativo">M&#x2C7;</li>
+                <li id="tres" class="desativo" onmouseenter="fundoAtivo('tres')" onmouseleave="fundoDesativo('tres')">M&#x2C7;</li>
             </ul>
         </div>
 

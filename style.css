@@ -135,9 +135,6 @@ div.macro li:hover{
 
 div.macro li.desativo{
     color: #7e7878;
-}
-
-div.macro li.desativo:hover{
     background-color: #251F21;
 }
 
