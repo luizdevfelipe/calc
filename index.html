@@ -52,16 +52,16 @@
             <!-- Todas as teclas numéricas e principais -->
             <table>
                 <tr>
-                    <td class="escuro">%</td>
+                    <td class="escuro" onclick="calculadora('porcent')">%</td>
                     <td class="escuro" onclick="calculadora('apagar')">CE</td>
                     <td class="escuro" onclick="calculadora('deletar')">C</td>
                     <td class="escuro"><img src="images/del.png" alt="Botão apagar"></td>
                 </tr>   
                 <tr>
-                    <td class="escuro"><sup>1</sup>/x</td>
+                    <td class="escuro" onclick="calculadora('1x')"><sup>1</sup>/x</td>
                     <td class="escuro" onclick="calculadora('pot')">x<sup>2</sup></td>
                     <td class="escuro" onclick="calculadora('raiz')"><img src="images/square.png" alt="Raíz quadrada"></td>
-                    <td class="escuro" onclick="calculadora('/')"><img src="images/division.png" alt="Divisão"></td>
+                    <td class="escuro" onclick="calculadora('/')" style="font-size: 1.3em;">&#x00F7;</td>
                 </tr>
                 <tr>
                     <td class="cinza" onclick="calculadora(7)">7</td>
@@ -84,7 +84,7 @@
                 <tr>
                     <td class="cinza" onclick="calculadora('+-')">+/-</td>
                     <td class="cinza" onclick="calculadora(0)">0</td>
-                    <td class="cinza">.</td>
+                    <td class="cinza" onclick="calculadora('.')">.</td>
                     <td class="igual" onclick="calculadora('=')">=</td>
                 </tr>
             </table>

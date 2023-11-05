@@ -17,7 +17,7 @@ function fundoDesativo(x){
 
 function calculadora(x){
     // colocar virgula no valor conforme a quantidade de casas decimais    
-    // arrumar botão CE e o botão que apaga somente o último caractere
+    // arrumar o botão que apaga somente o último caractere
 
     if (resultado.innerText == '0'){
         resultado.innerHTML = ''
@@ -56,10 +56,10 @@ function calculadora(x){
         resultado.innerHTML = 0
         historico.innerHTML = ''
 
-    } else if(['+', '*', '=', '-', '/', 'pot', 'raiz', '+-', 'm+', 'mc', 'apagar', 'deletar'].includes(x)){
+    } else if(['+', '*', '=', '-', '/', 'pot', 'raiz', '+-', 'm+', 'mc', 'apagar', 'deletar', '1x', '.', 'porcent'].includes(x)){
         resultado.innerHTML += ''    
     } 
-    else if(cont == 1){
+    else if(cont == 1){  // permite digitar o próximo número após uma operação
         resultado.innerHTML = '' + x
         cont = 0
     }else if(cont == 2){
@@ -79,6 +79,7 @@ function calculadora(x){
         }    
     }
 
+    // Definindo a operação e atribuindo valor a n1
     if (x == '+'){
         historico.innerHTML = resultado.innerHTML + ' + '
         n1 = Number(resultado.innerHTML)
@@ -98,34 +99,44 @@ function calculadora(x){
         cont = 1
     }
     if (x == '/'){
-        historico.innerHTML = resultado.innerHTML + ' / '
+        historico.innerHTML = resultado.innerHTML + ' &#x00F7; '
         n1 = Number(resultado.innerHTML)
         operacao = 'div'
         cont = 1
     }
-    if (x == 'pot'){
+    if (x == 'pot'){        
         historico.innerHTML =  `sqrt(${resultado.innerHTML})`
-        n1 = Number(resultado.innerHTML)
-        resultado.innerHTML = n1 ** 2        
+        n1 = Number(resultado.innerHTML)            
+        resultado.innerHTML = n1 ** 2
         operacao = 'pot'
         cont = 1
     }
-
     if (x == 'raiz'){
         historico.innerHTML =  `&#x221A;(${resultado.innerHTML})`
         n1 = Number(resultado.innerHTML)
-        resultado.innerHTML = n1 ** (1/2)
+        resultado.innerHTML = n1 ** (1/2) 
         operacao = 'raiz'
         cont = 1
     }
-
     if(x == '+-'){        
         n1 = Number(resultado.innerHTML)
         resultado.innerHTML = n1 * -1        
         cont = 1
     }
+    if(x == '1x'){
+        historico.innerHTML = `1/(${resultado.innerHTML})`
+        n1 = Number(resultado.innerHTML)
+        resultado.innerHTML = 1 / n1
+        cont = 1
+    }
+    if(x == '.'){
+        resultado.innerHTML += '.'
+    }
+    if(x == 'porcent'){        
+        resultado.innerHTML = Number(resultado.innerHTML) / 100
+    }
 
-
+    // Calculando o Resultado
     if (x == '='){
         n2 = Number(resultado.innerHTML)
         if (operacao == 'soma'){
@@ -148,7 +159,6 @@ function calculadora(x){
             varResult = n1 / n2
             cont = 2
         }        
-
         if(operacao == 'pot' || operacao == 'raiz'){            
             if (cont == 1){
                 historico.innerHTML += ' ='
@@ -156,14 +166,12 @@ function calculadora(x){
             }                                    
         }        
         
-        if(String(varResult).length > 16){            
+        if(String(varResult).length >= 15){            
             resultado.style.fontSize = '1.6em'
-            resultado.innerHTML = varResult
+            resultado.innerHTML = varResult           
         }
         else{
             resultado.innerHTML = varResult
         }
-    }
-
-    
+    }    
 }
