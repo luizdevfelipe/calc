@@ -8,6 +8,13 @@
     color: white;
 }
 
+body{
+    background: #e2adad url('images/pexels-cmonphotography-1809644.jpg') no-repeat center center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
 div.container{
     position: absolute;
     width: 350px;
