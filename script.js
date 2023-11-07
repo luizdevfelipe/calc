@@ -17,8 +17,7 @@ function fundoDesativo(x) {
 
 function calculadora(x) {
     // colocar virgula no valor conforme a quantidade de casas decimais    
-    // arrumar o botão que apaga somente o último caractere
-
+    // arrumar o limite de caracteres no visor
     if (resultado.innerText == '0') {
         resultado.innerHTML = ''
     }
@@ -135,6 +134,24 @@ function calculadora(x) {
         resultado.innerHTML = 1 / n1
         cont = 1
     }
+
+    if (x == 'del') {
+        if (resultado.innerHTML.length == 1) {
+            resultado.innerHTML = 0
+        } else {
+            lista = []
+            novoValor = ''
+            for (idx = 0; idx < resultado.innerHTML.length; idx++) {
+                lista[idx] = resultado.innerHTML.charAt(idx)
+            }
+            lista.pop()
+            for (itens in lista) {
+                novoValor += lista[itens]
+            }
+            resultado.innerHTML = novoValor
+        }
+    }
+
     if (x == '.') {
         resultado.innerHTML += '.'
     }
