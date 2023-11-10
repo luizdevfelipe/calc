@@ -48,7 +48,7 @@ function calculadora(x) {
 
     if (x == 'mr' && m == 1) {
         resultado.innerHTML = macro
-    } else if (x == 'mr' && rasultado.innerHTML == 0) {
+    } else if (x == 'mr' && resultado.innerHTML == 0) {
         resultado.innerHTML = 0
     }
     else if (x == 'deletar') {
