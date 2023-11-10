@@ -17,7 +17,6 @@ function fundoDesativo(x) {
 
 function calculadora(x) {
     // colocar virgula no valor conforme a quantidade de casas decimais    
-    // arrumar o limite de caracteres no visor
     if (resultado.innerText == '0') {
         resultado.innerHTML = ''
     }
@@ -109,19 +108,15 @@ function calculadora(x) {
         operacao = 'div'
         cont = 1
     }
-    if (x == 'pot') {
-        historico.innerHTML = `sqrt(${resultado.innerHTML})`
-        n1 = Number(resultado.innerHTML)
-        resultado.innerHTML = n1 ** 2
+    if (x == 'pot') {        
         operacao = 'pot'
         cont = 1
+        calcResult()
     }
-    if (x == 'raiz') {
-        historico.innerHTML = `&#x221A;(${resultado.innerHTML})`
-        n1 = Number(resultado.innerHTML)
-        resultado.innerHTML = n1 ** (1 / 2)
+    if (x == 'raiz') {        
         operacao = 'raiz'
         cont = 1
+        calcResult()
     }
     if (x == '+-') {
         n1 = Number(resultado.innerHTML)
@@ -129,10 +124,9 @@ function calculadora(x) {
         cont = 1
     }
     if (x == '1x') {
-        historico.innerHTML = `1/(${resultado.innerHTML})`
-        n1 = Number(resultado.innerHTML)
-        resultado.innerHTML = 1 / n1
+        operacao = '1x'
         cont = 1
+        calcResult()
     }
 
     if (x == 'del') {
@@ -159,42 +153,59 @@ function calculadora(x) {
         resultado.innerHTML = Number(resultado.innerHTML) / 100
     }
 
-    // Calculando o Resultado
-    if (x == '=') {
-        n2 = Number(resultado.innerHTML)
-        if (operacao == 'soma') {
-            historico.innerHTML += n2 + ' ='
-            varResult = n1 + n2
-            cont = 2
-        }
-        if (operacao == 'sub') {
-            historico.innerHTML += n2 + ' ='
-            varResult = n1 - n2
-            cont = 2
-        }
-        if (operacao == 'mult') {
-            historico.innerHTML += n2 + ' ='
-            varResult = n1 * n2
-            cont = 2
-        }
-        if (operacao == 'div') {
-            historico.innerHTML += n2 + ' ='
-            varResult = n1 / n2
-            cont = 2
-        }
-        if (operacao == 'pot' || operacao == 'raiz') {
-            if (cont == 1) {
-                historico.innerHTML += ' ='
-                cont = 2
-            }
-        }
+    
+}
 
-        if (String(varResult).length >= 15) {
-            resultado.style.fontSize = '1.6em'
-            resultado.innerHTML = varResult
+// Calculando o Resultado
+function calcResult() {
+    n2 = Number(resultado.innerHTML)
+    if (operacao == 'soma') {
+        historico.innerHTML += n2 + ' ='
+        varResult = n1 + n2
+        cont = 2
+    }
+    if (operacao == 'sub') {
+        historico.innerHTML += n2 + ' ='
+        varResult = n1 - n2
+        cont = 2
+    }
+    if (operacao == 'mult') {
+        historico.innerHTML += n2 + ' ='
+        varResult = n1 * n2
+        cont = 2
+    }
+    if (operacao == 'div') {
+        historico.innerHTML += n2 + ' ='
+        varResult = n1 / n2
+        cont = 2
+    }
+    if(operacao == 'pot'){
+        historico.innerHTML = `sqrt(${resultado.innerHTML})`
+        n1 = Number(resultado.innerHTML)
+        varResult = n1 ** 2
+    }
+    if(operacao == 'raiz'){
+        historico.innerHTML = `&#x221A;(${resultado.innerHTML})`
+        n1 = Number(resultado.innerHTML)
+        varResult = n1 ** (1 / 2)
+    }
+    if(operacao == '1x'){
+        historico.innerHTML = `1/(${resultado.innerHTML})`
+        n1 = Number(resultado.innerHTML)
+        varResult = 1 / n1
+    }
+    if (operacao == 'pot' || operacao == 'raiz') {
+        if (cont == 1) {
+            historico.innerHTML += ' ='
+            cont = 2
         }
-        else {
-            resultado.innerHTML = varResult
-        }
+    }
+
+    if (String(varResult).length >= 15) {
+        resultado.style.fontSize = '1.6em'
+        resultado.innerHTML = varResult
+    }
+    else {
+        resultado.innerHTML = varResult
     }
 }
