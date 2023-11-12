@@ -1,8 +1,8 @@
 resultado = document.getElementById('resultado')
 historico = document.getElementById('historico')
 desativo = document.querySelectorAll('.desativo')
-cont = 0
-m = 0
+cont = 0 // para funcionar historico e outros
+m = 0 // para funcionar os botões de macro
 function fixedTOP() {
     window.open("https://luizdevfelipe.github.io/calc/", '_blank', 'width=360px, height=570px')
 }
@@ -158,24 +158,43 @@ function calculadora(x) {
 
 // Calculando o Resultado
 function calcResult() {
-    n2 = Number(resultado.innerHTML)
+    if (cont != 2){
+        n2 = Number(resultado.innerHTML)
+    }
+    
     if (operacao == 'soma') {
         historico.innerHTML += n2 + ' ='
         varResult = n1 + n2
+        if(cont == 2){
+            historico.innerHTML = `${n2} + ${n1} =`
+        }
         cont = 2
     }
-    if (operacao == 'sub') {
-        historico.innerHTML += n2 + ' ='
+    if (operacao == 'sub') {               
+        if(cont == 2){           
+            n1 = resultado.innerHTML
+            historico.innerHTML = `${n1} - ${n2} =`                
+        } else{
+            historico.innerHTML += n2 + ' ='
+        }
         varResult = n1 - n2
         cont = 2
     }
     if (operacao == 'mult') {
         historico.innerHTML += n2 + ' ='
         varResult = n1 * n2
+        if(cont == 2){
+            historico.innerHTML = `${n2} x ${n1} =`
+        }
         cont = 2
     }
     if (operacao == 'div') {
-        historico.innerHTML += n2 + ' ='
+        if(cont == 2){
+            n1 = resultado.innerHTML
+            historico.innerHTML = `${n1} &#x00F7; ${n2} =`                    
+        } else{
+            historico.innerHTML += n2 + ' ='
+        }
         varResult = n1 / n2
         cont = 2
     }
