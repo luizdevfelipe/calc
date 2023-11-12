@@ -163,16 +163,18 @@ function calcResult() {
     }
     
     if (operacao == 'soma') {
-        historico.innerHTML += n2 + ' ='
-        varResult = n1 + n2
-        if(cont == 2){
-            historico.innerHTML = `${n2} + ${n1} =`
+        if(cont == 2){           
+            n1 = Number(resultado.innerHTML)
+            historico.innerHTML = `${n1} + ${n2} =`                
+        } else{
+            historico.innerHTML += n2 + ' ='
         }
+        varResult = n1 + n2
         cont = 2
     }
     if (operacao == 'sub') {               
         if(cont == 2){           
-            n1 = resultado.innerHTML
+            n1 = Number(resultado.innerHTML)
             historico.innerHTML = `${n1} - ${n2} =`                
         } else{
             historico.innerHTML += n2 + ' ='
@@ -181,17 +183,19 @@ function calcResult() {
         cont = 2
     }
     if (operacao == 'mult') {
-        historico.innerHTML += n2 + ' ='
-        varResult = n1 * n2
-        if(cont == 2){
-            historico.innerHTML = `${n2} x ${n1} =`
+        if(cont == 2){           
+            n1 = Number(resultado.innerHTML)
+            historico.innerHTML = `${n1} x ${n2} =`                
+        } else{
+            historico.innerHTML += n2 + ' ='
         }
+        varResult = n1 * n2
         cont = 2
     }
     if (operacao == 'div') {
-        if(cont == 2){
-            n1 = resultado.innerHTML
-            historico.innerHTML = `${n1} &#x00F7; ${n2} =`                    
+        if(cont == 2){           
+            n1 = Number(resultado.innerHTML)
+            historico.innerHTML = `${n1} &#x00F7; ${n2} =`                
         } else{
             historico.innerHTML += n2 + ' ='
         }
