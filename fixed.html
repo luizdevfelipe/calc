@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <script src="script.js" defer></script>
+    <style>
+        div.container{
+            height: 406px;
+        }
+        div.teclas table{
+            position: absolute;
+            transform: translate(2px, 90px);
+        }
+        #fixedOnTop{
+            position: absolute;
+            transform: translate(4px, 2px);
+            padding: 9px;
+            border-radius: 4px;
+        }
+        .result{
+            position: absolute;
+            font-size: 2.5em;
+            text-align: right;
+            width: 330px;
+            transform: translate(10px, 35px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">    
+
+        <div class="top">
+            <img id="fixedOnTop" src="images/fixedOnTop.png" alt="Ícone fixado no topo" onclick="fixedTOP()">
+        </div>        
+       
+        <div id="resultado" class="result">0
+            <!-- Resultado -->            
+        </div>        
+
+        <div class="teclas">
+            <!-- Todas as teclas numéricas e principais -->
+            <table>
+                <tr>
+                    <td class="escuro" onclick="calculadora('porcent')">%</td>
+                    <td class="escuro" onclick="calculadora('apagar')">CE</td>
+                    <td class="escuro" onclick="calculadora('deletar')">C</td>
+                    <td class="escuro" onclick="calculadora('del')"><img src="images/del.png" alt="Botão apagar"></td>
+                </tr>   
+                <tr>
+                    <td class="escuro" onclick="calculadora('1x')"><sup>1</sup>/x</td>
+                    <td class="escuro" onclick="calculadora('pot')">x<sup>2</sup></td>
+                    <td class="escuro" onclick="calculadora('raiz')"><img src="images/square.png" alt="Raíz quadrada"></td>
+                    <td class="escuro" onclick="calculadora('/')" style="font-size: 1.3em;">&#x00F7;</td>
+                </tr>
+                <tr>
+                    <td class="cinza" onclick="calculadora(7)">7</td>
+                    <td class="cinza" onclick="calculadora(8)">8</td>
+                    <td class="cinza" onclick="calculadora(9)">9</td>
+                    <td class="escuro" onclick="calculadora('*')">x</i></td>
+                </tr>
+                <tr>
+                    <td class="cinza" onclick="calculadora(4)">4</td>
+                    <td class="cinza" onclick="calculadora(5)">5</td>
+                    <td class="cinza" onclick="calculadora(6)">6</td>
+                    <td class="escuro" onclick="calculadora('-')">&#x2013;</td>
+                </tr>
+                <tr>
+                    <td class="cinza" onclick="calculadora(1)">1</td>
+                    <td class="cinza" onclick="calculadora(2)">2</td>
+                    <td class="cinza" onclick="calculadora(3)">3</td>
+                    <td class="escuro" onclick="calculadora('+')">+</td>
+                </tr>
+                <tr>
+                    <td class="cinza" onclick="calculadora('+-')">+/-</td>
+                    <td class="cinza" onclick="calculadora(0)">0</td>
+                    <td class="cinza" onclick="calculadora('.')">.</td>
+                    <td class="igual" onclick="calcResult()">=</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

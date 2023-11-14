@@ -3,8 +3,10 @@ historico = document.getElementById('historico')
 desativo = document.querySelectorAll('.desativo')
 cont = 0 // para funcionar historico e outros
 m = 0 // para funcionar os botões de macro
-function fixedTOP() {
-    window.open("https://luizdevfelipe.github.io/calc/", '_blank', 'width=360px, height=570px')
+function fixedTOP() {   
+    document.querySelector("div.header").style.display = 'none'
+    window.open("https://luizdevfelipe.github.io/calc/fixed.html", '_blank', 'width=360px, height=570px')
+    window.resizeTo(600, 400)
 }
 
 function fundoAtivo(x) {
@@ -43,7 +45,7 @@ function calculadora(x) {
         historico.innerHTML = ''
         macro = 0
         m = 0
-    }
+    }    
 
     if (x == 'mr' && m == 1) {
         resultado.innerHTML = macro
@@ -74,37 +76,94 @@ function calculadora(x) {
 
     else {
         resultado.style.fontSize = '2.5em'
-        if (resultado.innerHTML.length < 16) {
+        if (resultado.innerHTML.length < 21) {
             resultado.innerHTML += x
         }
 
-        if (resultado.innerHTML.length == 16) {
-            resultado.style.fontSize = '2.2em'
+        if (resultado.innerHTML.length > 14) {
+            resultado.style.fontSize = '2.1em'
+        }
+
+        if (resultado.innerHTML.length > 17) {
+            resultado.style.fontSize = '1.7em'
         }
     }
 
+
+    if(resultado.innerHTML.length == 4){
+        vet = []
+        tela = resultado.innerHTML.replaceAll(',', '')
+        for(i = 0; i < resultado.innerHTML.length; i++){
+            vet[i] = tela.charAt(i)
+        }
+        vet[0] += ','        
+        novo = ''
+        for(i in vet){
+            novo += vet[i]            
+        }        
+        resultado.innerHTML = novo
+    } else if (resultado.innerHTML.length == 6) {
+        tela = resultado.innerHTML.replaceAll(',', '')
+        for(i = 0; i < resultado.innerHTML.length; i++){
+            vet[i] = tela.charAt(i)
+        }
+        vet[1] += ','
+        novo = ''
+        for(i in vet){
+            novo += vet[i]            
+        }        
+        resultado.innerHTML = novo
+    }   else if (resultado.innerHTML.length == 7) {
+        tela = resultado.innerHTML.replaceAll(',', '')
+        for(i = 0; i < resultado.innerHTML.length; i++){
+            vet[i] = tela.charAt(i)
+        }
+        vet[2] += ','
+        novo = ''
+        for(i in vet){
+            novo += vet[i]            
+        }        
+        resultado.innerHTML = novo
+    } else if (resultado.innerHTML.length == 8) {
+        tela = resultado.innerHTML.replaceAll(',', '')
+        for(i = 0; i < resultado.innerHTML.length; i++){
+            vet[i] = tela.charAt(i)
+        }
+        vet[0] += ','
+        vet[3] += ','
+        novo = ''
+        for(i in vet){
+            novo += vet[i]            
+        }        
+        resultado.innerHTML = novo        
+    } 
+
+
+
+
     // Definindo a operação e atribuindo valor a n1
     if (x == '+') {
-        historico.innerHTML = resultado.innerHTML + ' + '
-        n1 = Number(resultado.innerHTML)
+        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        historico.innerHTML = String(n1) + ' + '
+                
         operacao = 'soma'
         cont = 1
     }
-    if (x == '-') {
-        historico.innerHTML = resultado.innerHTML + ' - '
-        n1 = Number(resultado.innerHTML)
+    if (x == '-') {        
+        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        historico.innerHTML = String(n1) + ' - '
         operacao = 'sub'
         cont = 1
     }
-    if (x == '*') {
-        historico.innerHTML = resultado.innerHTML + ' x '
-        n1 = Number(resultado.innerHTML)
+    if (x == '*') {        
+        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        historico.innerHTML = String(n1) + ' x '
         operacao = 'mult'
         cont = 1
     }
-    if (x == '/') {
-        historico.innerHTML = resultado.innerHTML + ' &#x00F7; '
-        n1 = Number(resultado.innerHTML)
+    if (x == '/') {        
+        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        historico.innerHTML = String(n1) + ' &#x00F7; '
         operacao = 'div'
         cont = 1
     }
@@ -119,7 +178,7 @@ function calculadora(x) {
         calcResult()
     }
     if (x == '+-') {
-        n1 = Number(resultado.innerHTML)
+        n1 = Number(resultado.innerHTML.replaceAll(',',''))
         resultado.innerHTML = n1 * -1
         cont = 1
     }
@@ -150,7 +209,7 @@ function calculadora(x) {
         resultado.innerHTML += '.'
     }
     if (x == 'porcent') {
-        resultado.innerHTML = Number(resultado.innerHTML) / 100
+        resultado.innerHTML = Number(resultado.innerHTML.replaceAll(',','')) / 100
     }
 
     
@@ -159,12 +218,12 @@ function calculadora(x) {
 // Calculando o Resultado
 function calcResult() {
     if (cont != 2){
-        n2 = Number(resultado.innerHTML)
+        n2 = Number(resultado.innerHTML.replaceAll(',',''))
     }
     
     if (operacao == 'soma') {
         if(cont == 2){           
-            n1 = Number(resultado.innerHTML)
+            n1 = Number(resultado.innerHTML.replaceAll(',',''))
             historico.innerHTML = `${n1} + ${n2} =`                
         } else{
             historico.innerHTML += n2 + ' ='
@@ -174,7 +233,7 @@ function calcResult() {
     }
     if (operacao == 'sub') {               
         if(cont == 2){           
-            n1 = Number(resultado.innerHTML)
+            n1 = Number(resultado.innerHTML.replaceAll(',',''))
             historico.innerHTML = `${n1} - ${n2} =`                
         } else{
             historico.innerHTML += n2 + ' ='
@@ -184,7 +243,7 @@ function calcResult() {
     }
     if (operacao == 'mult') {
         if(cont == 2){           
-            n1 = Number(resultado.innerHTML)
+            n1 = Number(resultado.innerHTML.replaceAll(',',''))
             historico.innerHTML = `${n1} x ${n2} =`                
         } else{
             historico.innerHTML += n2 + ' ='
@@ -194,7 +253,7 @@ function calcResult() {
     }
     if (operacao == 'div') {
         if(cont == 2){           
-            n1 = Number(resultado.innerHTML)
+            n1 = Number(resultado.innerHTML.replaceAll(',',''))
             historico.innerHTML = `${n1} &#x00F7; ${n2} =`                
         } else{
             historico.innerHTML += n2 + ' ='
@@ -203,18 +262,18 @@ function calcResult() {
         cont = 2
     }
     if(operacao == 'pot'){
-        historico.innerHTML = `sqrt(${resultado.innerHTML})`
-        n1 = Number(resultado.innerHTML)
+        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        historico.innerHTML = `sqrt(${String(n1)})`        
         varResult = n1 ** 2
     }
     if(operacao == 'raiz'){
-        historico.innerHTML = `&#x221A;(${resultado.innerHTML})`
-        n1 = Number(resultado.innerHTML)
+        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        historico.innerHTML = `&#x221A;(${String(n1)})`        
         varResult = n1 ** (1 / 2)
     }
     if(operacao == '1x'){
-        historico.innerHTML = `1/(${resultado.innerHTML})`
-        n1 = Number(resultado.innerHTML)
+        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        historico.innerHTML = `1/(${String(n1)})`        
         varResult = 1 / n1
     }
     if (operacao == 'pot' || operacao == 'raiz') {
