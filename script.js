@@ -3,10 +3,8 @@ historico = document.getElementById('historico')
 desativo = document.querySelectorAll('.desativo')
 cont = 0 // para funcionar historico e outros
 m = 0 // para funcionar os botões de macro
-function fixedTOP() {   
-    document.querySelector("div.header").style.display = 'none'
-    window.open("https://luizdevfelipe.github.io/calc/fixed.html", '_blank', 'width=360px, height=570px')
-    window.resizeTo(600, 400)
+function fixedTOP() {       
+    window.open("https://luizdevfelipe.github.io/calc/fixed.html", '_blank', 'width=360px, height=430px')
 }
 
 function fundoAtivo(x) {
@@ -88,58 +86,6 @@ function calculadora(x) {
             resultado.style.fontSize = '1.7em'
         }
     }
-
-
-    if(resultado.innerHTML.length == 4){
-        vet = []
-        tela = resultado.innerHTML.replaceAll(',', '')
-        for(i = 0; i < resultado.innerHTML.length; i++){
-            vet[i] = tela.charAt(i)
-        }
-        vet[0] += ','        
-        novo = ''
-        for(i in vet){
-            novo += vet[i]            
-        }        
-        resultado.innerHTML = novo
-    } else if (resultado.innerHTML.length == 6) {
-        tela = resultado.innerHTML.replaceAll(',', '')
-        for(i = 0; i < resultado.innerHTML.length; i++){
-            vet[i] = tela.charAt(i)
-        }
-        vet[1] += ','
-        novo = ''
-        for(i in vet){
-            novo += vet[i]            
-        }        
-        resultado.innerHTML = novo
-    }   else if (resultado.innerHTML.length == 7) {
-        tela = resultado.innerHTML.replaceAll(',', '')
-        for(i = 0; i < resultado.innerHTML.length; i++){
-            vet[i] = tela.charAt(i)
-        }
-        vet[2] += ','
-        novo = ''
-        for(i in vet){
-            novo += vet[i]            
-        }        
-        resultado.innerHTML = novo
-    } else if (resultado.innerHTML.length == 8) {
-        tela = resultado.innerHTML.replaceAll(',', '')
-        for(i = 0; i < resultado.innerHTML.length; i++){
-            vet[i] = tela.charAt(i)
-        }
-        vet[0] += ','
-        vet[3] += ','
-        novo = ''
-        for(i in vet){
-            novo += vet[i]            
-        }        
-        resultado.innerHTML = novo        
-    } 
-
-
-
 
     // Definindo a operação e atribuindo valor a n1
     if (x == '+') {
