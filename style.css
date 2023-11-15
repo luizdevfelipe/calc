@@ -15,6 +15,32 @@ body{
     height: 100vh;
 }
 
+div.menu{    
+    position: absolute;
+    z-index: 1;
+    background-color: #2b2b2b;    
+    border-radius: 0px 5px 5px 0px;
+    transition: width 0.7s;
+    transform: translate(0px, -40px);
+}
+
+div.menu ul{
+    list-style-type: none;
+    display: none;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+div.menu p{
+    margin-top: 45px;
+    color: #bebebe;
+    padding: 10px 13px;
+}
+
+div.menu li{
+    padding: 10px;
+}
+
 div.container{
     position: absolute;
     width: 350px;

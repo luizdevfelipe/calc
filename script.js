@@ -3,8 +3,8 @@ historico = document.getElementById('historico')
 desativo = document.querySelectorAll('.desativo')
 cont = 0 // para funcionar historico e outros
 m = 0 // para funcionar os botões de macro
-function fixedTOP() {       
-    window.open("https://luizdevfelipe.github.io/calc/fixed.html", '_blank', 'width=360px, height=430px')
+function fixedTOP() {
+    window.open("fixed.html", '_blank', 'width=360px, height=430px')
 }
 
 function fundoAtivo(x) {
@@ -13,6 +13,27 @@ function fundoAtivo(x) {
 
 function fundoDesativo(x) {
     if (m == 1) { document.querySelector(`li#${x}.desativo`).style.background = '' }
+}
+
+function menu() {
+    icone = document.getElementById('menu-ico');
+    abaMenu = document.querySelector('div.menu');    
+    lista = document.querySelector('div.menu>ul');
+    
+    if (abaMenu.style.width != '290px'){
+        abaMenu.style.width = '290px';
+        abaMenu.style.height = '500px';        
+        icone.style.zIndex = '1'         
+        lista.style.display = 'block'      
+    } else {
+        abaMenu.style.width = '0px';
+        abaMenu.style.height = '0px';
+        icone.style.zIndex = '0px'
+        lista.style.display = 'none'   
+    }
+    
+
+
 }
 
 function calculadora(x) {
@@ -43,7 +64,7 @@ function calculadora(x) {
         historico.innerHTML = ''
         macro = 0
         m = 0
-    }    
+    }
 
     if (x == 'mr' && m == 1) {
         resultado.innerHTML = macro
@@ -89,42 +110,42 @@ function calculadora(x) {
 
     // Definindo a operação e atribuindo valor a n1
     if (x == '+') {
-        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
         historico.innerHTML = String(n1) + ' + '
-                
+
         operacao = 'soma'
         cont = 1
     }
-    if (x == '-') {        
-        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+    if (x == '-') {
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
         historico.innerHTML = String(n1) + ' - '
         operacao = 'sub'
         cont = 1
     }
-    if (x == '*') {        
-        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+    if (x == '*') {
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
         historico.innerHTML = String(n1) + ' x '
         operacao = 'mult'
         cont = 1
     }
-    if (x == '/') {        
-        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+    if (x == '/') {
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
         historico.innerHTML = String(n1) + ' &#x00F7; '
         operacao = 'div'
         cont = 1
     }
-    if (x == 'pot') {        
+    if (x == 'pot') {
         operacao = 'pot'
         cont = 1
         calcResult()
     }
-    if (x == 'raiz') {        
+    if (x == 'raiz') {
         operacao = 'raiz'
         cont = 1
         calcResult()
     }
     if (x == '+-') {
-        n1 = Number(resultado.innerHTML.replaceAll(',',''))
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
         resultado.innerHTML = n1 * -1
         cont = 1
     }
@@ -155,71 +176,71 @@ function calculadora(x) {
         resultado.innerHTML += '.'
     }
     if (x == 'porcent') {
-        resultado.innerHTML = Number(resultado.innerHTML.replaceAll(',','')) / 100
+        resultado.innerHTML = Number(resultado.innerHTML.replaceAll(',', '')) / 100
     }
 
-    
+
 }
 
 // Calculando o Resultado
 function calcResult() {
-    if (cont != 2){
-        n2 = Number(resultado.innerHTML.replaceAll(',',''))
+    if (cont != 2) {
+        n2 = Number(resultado.innerHTML.replaceAll(',', ''))
     }
-    
+
     if (operacao == 'soma') {
-        if(cont == 2){           
-            n1 = Number(resultado.innerHTML.replaceAll(',',''))
-            historico.innerHTML = `${n1} + ${n2} =`                
-        } else{
+        if (cont == 2) {
+            n1 = Number(resultado.innerHTML.replaceAll(',', ''))
+            historico.innerHTML = `${n1} + ${n2} =`
+        } else {
             historico.innerHTML += n2 + ' ='
         }
         varResult = n1 + n2
         cont = 2
     }
-    if (operacao == 'sub') {               
-        if(cont == 2){           
-            n1 = Number(resultado.innerHTML.replaceAll(',',''))
-            historico.innerHTML = `${n1} - ${n2} =`                
-        } else{
+    if (operacao == 'sub') {
+        if (cont == 2) {
+            n1 = Number(resultado.innerHTML.replaceAll(',', ''))
+            historico.innerHTML = `${n1} - ${n2} =`
+        } else {
             historico.innerHTML += n2 + ' ='
         }
         varResult = n1 - n2
         cont = 2
     }
     if (operacao == 'mult') {
-        if(cont == 2){           
-            n1 = Number(resultado.innerHTML.replaceAll(',',''))
-            historico.innerHTML = `${n1} x ${n2} =`                
-        } else{
+        if (cont == 2) {
+            n1 = Number(resultado.innerHTML.replaceAll(',', ''))
+            historico.innerHTML = `${n1} x ${n2} =`
+        } else {
             historico.innerHTML += n2 + ' ='
         }
         varResult = n1 * n2
         cont = 2
     }
     if (operacao == 'div') {
-        if(cont == 2){           
-            n1 = Number(resultado.innerHTML.replaceAll(',',''))
-            historico.innerHTML = `${n1} &#x00F7; ${n2} =`                
-        } else{
+        if (cont == 2) {
+            n1 = Number(resultado.innerHTML.replaceAll(',', ''))
+            historico.innerHTML = `${n1} &#x00F7; ${n2} =`
+        } else {
             historico.innerHTML += n2 + ' ='
         }
         varResult = n1 / n2
         cont = 2
     }
-    if(operacao == 'pot'){
-        n1 = Number(resultado.innerHTML.replaceAll(',',''))
-        historico.innerHTML = `sqrt(${String(n1)})`        
+    if (operacao == 'pot') {
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
+        historico.innerHTML = `sqrt(${String(n1)})`
         varResult = n1 ** 2
     }
-    if(operacao == 'raiz'){
-        n1 = Number(resultado.innerHTML.replaceAll(',',''))
-        historico.innerHTML = `&#x221A;(${String(n1)})`        
+    if (operacao == 'raiz') {
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
+        historico.innerHTML = `&#x221A;(${String(n1)})`
         varResult = n1 ** (1 / 2)
     }
-    if(operacao == '1x'){
-        n1 = Number(resultado.innerHTML.replaceAll(',',''))
-        historico.innerHTML = `1/(${String(n1)})`        
+    if (operacao == '1x') {
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
+        historico.innerHTML = `1/(${String(n1)})`
         varResult = 1 / n1
     }
     if (operacao == 'pot' || operacao == 'raiz') {
