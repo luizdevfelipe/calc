@@ -18,6 +18,8 @@ body{
 div.menu{    
     position: absolute;
     z-index: 1;
+    width: 0px;
+    height: 0px;
     background-color: #2b2b2b;    
     border-radius: 0px 5px 5px 0px;
     transition: width 0.7s;

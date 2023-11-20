@@ -17,23 +17,116 @@ function fundoDesativo(x) {
 
 function menu() {
     icone = document.getElementById('menu-ico');
-    abaMenu = document.querySelector('div.menu');    
+    abaMenu = document.querySelector('div.menu');
     lista = document.querySelector('div.menu>ul');
-    
-    if (abaMenu.style.width != '290px'){
+
+    if (abaMenu.style.width != '290px') {
         abaMenu.style.width = '290px';
-        abaMenu.style.height = '500px';        
-        icone.style.zIndex = '1'         
-        lista.style.display = 'block'      
+        abaMenu.style.height = '500px';
+        icone.style.zIndex = '1'
+        lista.style.display = 'block'
     } else {
         abaMenu.style.width = '0px';
         abaMenu.style.height = '0px';
         icone.style.zIndex = '0px'
-        lista.style.display = 'none'   
+        lista.style.display = 'none'
     }
-    
+}
 
+function virgula() {
+    tela = resultado.innerHTML.replaceAll(',', '')
+    tamanho = tela.length
 
+    vet = []
+    for (i = 0; i < tamanho; i++) {
+        vet[i] = tela.charAt(i)
+    }
+
+    switch (tamanho) {
+        case 4:
+            vet[0] += ','
+            break;
+
+        case 5:
+            vet[1] += ','
+            break;
+
+        case 6:
+            vet[2] += ','
+            break;
+
+        case 7:
+            vet[0] += ','
+            vet[3] += ','
+            break;
+
+        case 8:
+            vet[1] += ','
+            vet[4] += ','
+            break;
+
+        case 9:
+            vet[2] += ','
+            vet[5] += ','
+            break;
+
+        case 10:
+            vet[0] += ','
+            vet[3] += ','
+            vet[6] += ','
+            break;
+
+        case 11:
+            vet[1] += ','
+            vet[4] += ','
+            vet[7] += ','
+            break;
+
+        case 12:
+            vet[2] += ','
+            vet[5] += ','
+            vet[8] += ','
+            break;
+
+        case 13:
+            vet[0] += ','
+            vet[3] += ','
+            vet[6] += ','
+            vet[9] += ','
+            break;
+
+        case 14:
+            vet[1] += ','
+            vet[4] += ','
+            vet[7] += ','
+            vet[10] += ','
+            break;
+
+        case 15:
+            vet[2] += ','
+            vet[5] += ','
+            vet[8] += ','
+            vet[11] += ','
+            break;
+
+        case 16:
+            vet[0] += ','
+            vet[3] += ','
+            vet[6] += ','
+            vet[9] += ','
+            vet[12] += ','
+            break;
+
+        default:
+            break;
+    }
+
+    s = ''
+    for (i in vet) {
+        s += vet[i]
+    }
+
+    resultado.innerHTML = s
 }
 
 function calculadora(x) {
@@ -108,6 +201,8 @@ function calculadora(x) {
         }
     }
 
+    virgula()
+
     // Definindo a operação e atribuindo valor a n1
     if (x == '+') {
         n1 = Number(resultado.innerHTML.replaceAll(',', ''))
@@ -172,7 +267,7 @@ function calculadora(x) {
         }
     }
 
-    if (x == '.') {
+    if (x == '.' && resultado.innerHTML.indexOf('.') == -1) {
         resultado.innerHTML += '.'
     }
     if (x == 'porcent') {
@@ -253,8 +348,10 @@ function calcResult() {
     if (String(varResult).length >= 15) {
         resultado.style.fontSize = '1.6em'
         resultado.innerHTML = varResult
+        virgula()
     }
     else {
         resultado.innerHTML = varResult
+        virgula()
     }
 }
