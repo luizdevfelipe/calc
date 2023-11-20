@@ -34,11 +34,20 @@ div.menu ul{
 div.menu p{
     margin-top: 45px;
     color: #bebebe;
-    padding: 10px 13px;
+    padding: 5px 13px;
 }
 
 div.menu li{
     padding: 10px;
+}
+
+div.menu li > img{
+    padding-right: 15px;
+}
+
+div.menu li.marked{
+    background-color: #353535;
+    border-left: 3px solid #7e7878;
 }
 
 div.container{
