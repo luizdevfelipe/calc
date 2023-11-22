@@ -36,7 +36,7 @@ function menu() {
 function virgula() {
     tela = resultado.innerHTML.replaceAll(',', '')
     tamanho = tela.length
-
+    
     vet = []
     for (i = 0; i < tamanho; i++) {
         vet[i] = tela.charAt(i)
@@ -115,6 +115,14 @@ function virgula() {
             vet[6] += ','
             vet[9] += ','
             vet[12] += ','
+            break;
+
+        case 17:
+            vet[1] += ','
+            vet[4] += ','
+            vet[7] += ','
+            vet[10] += ','
+            vet[13] += ','
             break;
 
         default:
@@ -201,7 +209,9 @@ function calculadora(x) {
         }
     }
 
-    virgula()
+    if (resultado.innerHTML.indexOf('.') == -1) {
+            virgula()
+        }
 
     // Definindo a operação e atribuindo valor a n1
     if (x == '+') {
@@ -242,7 +252,7 @@ function calculadora(x) {
     if (x == '+-') {
         n1 = Number(resultado.innerHTML.replaceAll(',', ''))
         resultado.innerHTML = n1 * -1
-        cont = 1
+        virgula()        
     }
     if (x == '1x') {
         operacao = '1x'
@@ -264,6 +274,7 @@ function calculadora(x) {
                 novoValor += lista[itens]
             }
             resultado.innerHTML = novoValor
+            virgula()
         }
     }
 
@@ -348,10 +359,15 @@ function calcResult() {
     if (String(varResult).length >= 15) {
         resultado.style.fontSize = '1.6em'
         resultado.innerHTML = varResult
-        virgula()
+        if (resultado.innerHTML.indexOf('.') == -1) {
+            virgula()
+        }
+
     }
     else {
         resultado.innerHTML = varResult
-        virgula()
+        if (resultado.innerHTML.indexOf('.') == -1) {
+            virgula()
+        }
     }
 }
