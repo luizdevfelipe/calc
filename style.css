@@ -22,16 +22,8 @@ div.menu{
     height: 0px;
     background-color: #2b2b2b;    
     border-radius: 0px 5px 5px 0px;
-    /*transition: width 0.45s;*/
+    transition: width 0.45s;
     transform: translate(0px, -40px);
-}
-
-div#fundo{
-    position: absolute;
-    background-color: #2b2b2b;
-    width: 0px;
-    height: 0px;
-    transition-duration: 4s;
 }
 
 #menu-ico{
@@ -67,7 +59,7 @@ div.menu ul::-webkit-scrollbar-thumb {
 }
 
 div.menu p{
-    margin-top: 45px;
+    margin-top: 17px;
     color: #bebebe;
     padding: 5px 13px;
 }

@@ -18,23 +18,16 @@ function fundoDesativo(x) {
 function menu() {
     icone = document.getElementById('menu-ico');
     abaMenu = document.querySelector('div.menu');
-    lista = document.querySelector('div.menu>ul');
-    divfundo = document.getElementById('fundo')
+    lista = document.querySelector('div.menu>ul');    
 
     if (abaMenu.style.width != '290px') {
         abaMenu.style.width = '290px';
         abaMenu.style.height = '500px';
-
-        divfundo.style.width = '273px'
-        divfundo.style.height = '38px'              
-
-        icone.style.top = '2px'        
-        lista.style.display = 'block'
-
+        icone.style.top = '2px';
+        lista.style.display = 'block';
     } else {
         abaMenu.style.width = '0px';
         abaMenu.style.height = '0px';
-        icone.style.zIndex = '0'
         lista.style.display = 'none'
     }
 }
