@@ -22,8 +22,28 @@ div.menu{
     height: 0px;
     background-color: #2b2b2b;    
     border-radius: 0px 5px 5px 0px;
-    transition: width 0.7s;
+    /*transition: width 0.45s;*/
     transform: translate(0px, -40px);
+}
+
+div#fundo{
+    position: absolute;
+    background-color: #2b2b2b;
+    width: 0px;
+    height: 0px;
+    transition-duration: 4s;
+}
+
+#menu-ico{
+    position: absolute;
+    top: 49px;
+    left: 11px;
+    font-size: 1.4em;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    padding: 7px 0px;
+    border-radius: 4px;
 }
 
 div.menu ul{
@@ -31,6 +51,19 @@ div.menu ul{
     display: none;
     overflow-y: scroll;
     height: 500px;
+    scrollbar-width: thin;
+}
+
+div.menu ul::-webkit-scrollbar {
+    width: 7px;    
+}
+
+div.menu ul::-webkit-scrollbar-track {
+    background-color: #2b2b2b;    
+}
+
+div.menu ul::-webkit-scrollbar-thumb {
+    background-color: white;    
 }
 
 div.menu p{
@@ -92,17 +125,6 @@ ul#fecha li:hover{
 ul#fecha li#X:hover{
     background-color: #C72B1C;
     border-radius: 0px 8px 0px 0px;
-}
-
-#menu-ico{
-    position: absolute;
-    font-size: 1.4em;
-    width: 36px;
-    height: 36px;
-    text-align: center;
-    padding: 7px 0px;
-    border-radius: 4px;
-    transform: translate(10px, -38px);
 }
 
 #menu-ico:hover{

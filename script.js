@@ -19,16 +19,22 @@ function menu() {
     icone = document.getElementById('menu-ico');
     abaMenu = document.querySelector('div.menu');
     lista = document.querySelector('div.menu>ul');
+    divfundo = document.getElementById('fundo')
 
     if (abaMenu.style.width != '290px') {
         abaMenu.style.width = '290px';
         abaMenu.style.height = '500px';
-        icone.style.zIndex = '1'
+
+        divfundo.style.width = '273px'
+        divfundo.style.height = '38px'              
+
+        icone.style.top = '2px'        
         lista.style.display = 'block'
+
     } else {
         abaMenu.style.width = '0px';
         abaMenu.style.height = '0px';
-        icone.style.zIndex = '0px'
+        icone.style.zIndex = '0'
         lista.style.display = 'none'
     }
 }
@@ -138,7 +144,12 @@ function virgula() {
 }
 
 function calculadora(x) {
-    // colocar virgula no valor conforme a quantidade de casas decimais    
+    // colocar virgula em um 'resultado' que tenha ponto -> 2,500.80
+    // arrumar casos onde um valor negativo adiciona virgula a mais -,999  -,999,999
+    // arrumar botão do menu quando aberto, fazer uma div do tamanho do menu
+    // terminar de fazer os botões macros
+    // fazer operações sequênciais, 5 + 5 + 10
+    // fazer testes com o botão de apagar o último valor, (está colocando vírgula quando tem ponto)
     if (resultado.innerText == '0') {
         resultado.innerHTML = ''
     }
@@ -267,7 +278,7 @@ function calculadora(x) {
             lista = []
             novoValor = ''
             for (idx = 0; idx < resultado.innerHTML.length; idx++) {
-                lista[idx] = resultado.innerHTML.charAt(idx)
+                lista[idx] = resultado.innerHTML[idx]
             }
             lista.pop()
             for (itens in lista) {
