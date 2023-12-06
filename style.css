@@ -9,8 +9,7 @@
 }
 
 body{
-    background: #e2adad url('images/pexels-cmonphotography-1809644.jpg') no-repeat center center;
-    background-size: cover;
+    background-image: linear-gradient(40deg, #202634 30%, #263047, #49577A , #D19FA2, #83657F);
     width: 100vw;
     height: 100vh;
 }

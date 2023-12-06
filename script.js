@@ -18,7 +18,7 @@ function fundoDesativo(x) {
 function menu() {
     icone = document.getElementById('menu-ico');
     abaMenu = document.querySelector('div.menu');
-    lista = document.querySelector('div.menu>ul');    
+    lista = document.querySelector('div.menu>ul');
 
     if (abaMenu.style.width != '290px') {
         abaMenu.style.width = '290px';
@@ -35,7 +35,11 @@ function menu() {
 function virgula() {
     tela = resultado.innerHTML.replaceAll(',', '')
     tamanho = tela.length
-    
+
+    if (tela.indexOf('-') != -1) {
+        x = 1
+    } else { x = 0 }
+
     vet = []
     for (i = 0; i < tamanho; i++) {
         vet[i] = tela.charAt(i)
@@ -43,7 +47,7 @@ function virgula() {
 
     switch (tamanho) {
         case 4:
-            vet[0] += ','
+            if (x == 0) { vet[0] += ',' }
             break;
 
         case 5:
@@ -55,7 +59,7 @@ function virgula() {
             break;
 
         case 7:
-            vet[0] += ','
+            if (x == 0) { vet[0] += ',' }
             vet[3] += ','
             break;
 
@@ -70,7 +74,7 @@ function virgula() {
             break;
 
         case 10:
-            vet[0] += ','
+            if (x == 0) { vet[0] += ',' }
             vet[3] += ','
             vet[6] += ','
             break;
@@ -88,7 +92,7 @@ function virgula() {
             break;
 
         case 13:
-            vet[0] += ','
+            if (x == 0) { vet[0] += ',' }
             vet[3] += ','
             vet[6] += ','
             vet[9] += ','
@@ -109,19 +113,11 @@ function virgula() {
             break;
 
         case 16:
-            vet[0] += ','
+            if (x == 0) { vet[0] += ',' }
             vet[3] += ','
             vet[6] += ','
             vet[9] += ','
             vet[12] += ','
-            break;
-
-        case 17:
-            vet[1] += ','
-            vet[4] += ','
-            vet[7] += ','
-            vet[10] += ','
-            vet[13] += ','
             break;
 
         default:
@@ -138,11 +134,8 @@ function virgula() {
 
 function calculadora(x) {
     // colocar virgula em um 'resultado' que tenha ponto -> 2,500.80
-    // arrumar casos onde um valor negativo adiciona virgula a mais -,999  -,999,999
-    // arrumar botão do menu quando aberto, fazer uma div do tamanho do menu
     // terminar de fazer os botões macros
     // fazer operações sequênciais, 5 + 5 + 10
-    // fazer testes com o botão de apagar o último valor, (está colocando vírgula quando tem ponto)
     if (resultado.innerText == '0') {
         resultado.innerHTML = ''
     }
@@ -214,8 +207,8 @@ function calculadora(x) {
     }
 
     if (resultado.innerHTML.indexOf('.') == -1) {
-            virgula()
-        }
+        virgula()
+    }
 
     // Definindo a operação e atribuindo valor a n1
     if (x == '+') {
@@ -254,9 +247,8 @@ function calculadora(x) {
         calcResult()
     }
     if (x == '+-') {
-        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
-        resultado.innerHTML = n1 * -1
-        virgula()        
+        operacao = '+-'
+        calcResult()
     }
     if (x == '1x') {
         operacao = '1x'
@@ -278,7 +270,7 @@ function calculadora(x) {
                 novoValor += lista[itens]
             }
             resultado.innerHTML = novoValor
-            virgula()
+            if (resultado.innerHTML.indexOf('.') == -1){ virgula() }           
         }
     }
 
@@ -353,6 +345,10 @@ function calcResult() {
         historico.innerHTML = `1/(${String(n1)})`
         varResult = 1 / n1
     }
+    if (operacao == '+-') {
+        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
+        varResult = n1 * -1
+    }
     if (operacao == 'pot' || operacao == 'raiz') {
         if (cont == 1) {
             historico.innerHTML += ' ='
@@ -361,12 +357,15 @@ function calcResult() {
     }
 
     if (String(varResult).length >= 15) {
-        resultado.style.fontSize = '1.6em'
-        resultado.innerHTML = varResult
-        if (resultado.innerHTML.indexOf('.') == -1) {
-            virgula()
+        if (String(varResult).length >= 17) {
+            resultado.innerHTML = varResult.toExponential()
+        } else {
+            resultado.style.fontSize = '1.6em'
+            resultado.innerHTML = varResult
+            if (resultado.innerHTML.indexOf('.') == -1) { // quando não tem ponto executa virgula
+                virgula()
+            }
         }
-
     }
     else {
         resultado.innerHTML = varResult
