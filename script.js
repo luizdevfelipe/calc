@@ -133,7 +133,6 @@ function virgula() {
 }
 
 function calculadora(x) {
-    // colocar virgula em um 'resultado' que tenha ponto -> 2,500.80
     // terminar de fazer os botões macros
     // fazer operações sequênciais, 5 + 5 + 10
     if (resultado.innerText == '0') {
@@ -142,6 +141,7 @@ function calculadora(x) {
 
     if (x == 'apagar') {
         resultado.innerHTML = 0
+        resultado.style.fontSize = '2.5em'
     }
 
     if (x == 'm+') {
@@ -172,6 +172,7 @@ function calculadora(x) {
     else if (x == 'deletar') {
         resultado.innerHTML = 0
         historico.innerHTML = ''
+        resultado.style.fontSize = '2.5em'
 
     } else if (['+', '*', '=', '-', '/', 'pot', 'raiz', '+-', 'm+', 'mc', 'apagar', 'deletar', '1x', '.', 'porcent', 'del'].includes(x)) {    // não digita os valores de x passados no visor
         if (resultado.innerHTML == 0) {
@@ -270,7 +271,7 @@ function calculadora(x) {
                 novoValor += lista[itens]
             }
             resultado.innerHTML = novoValor
-            if (resultado.innerHTML.indexOf('.') == -1){ virgula() }           
+            if (resultado.innerHTML.indexOf('.') == -1) { virgula() }
         }
     }
 
@@ -354,23 +355,32 @@ function calcResult() {
             historico.innerHTML += ' ='
             cont = 2
         }
-    }
+    }    
 
     if (String(varResult).length >= 15) {
-        if (String(varResult).length >= 17) {
+        resultado.innerHTML = varResult
+        resultado.style.fontSize = '1.6em'         
+        if (String(varResult).length >= 17 && varResult >= 10) {
             resultado.innerHTML = varResult.toExponential()
-        } else {
-            resultado.style.fontSize = '1.6em'
-            resultado.innerHTML = varResult
-            if (resultado.innerHTML.indexOf('.') == -1) { // quando não tem ponto executa virgula
-                virgula()
-            }
-        }
+        }      
     }
     else {
         resultado.innerHTML = varResult
         if (resultado.innerHTML.indexOf('.') == -1) {
             virgula()
         }
+    }
+
+    
+
+    if (resultado.innerHTML.indexOf('.') == -1) { // quando não tem ponto executa virgula
+        virgula()      
+    } else {
+        
+        partInt = Math.floor(varResult)
+        decimal = (varResult - partInt) * 10
+        resultado.innerHTML = partInt 
+        virgula()        
+        resultado.innerHTML += '.' + String(decimal.toFixed(5)).replaceAll('.','')        
     }
 }
