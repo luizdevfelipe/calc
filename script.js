@@ -133,7 +133,6 @@ function virgula() {
 }
 
 function calculadora(x) {
-    // terminar de fazer os botões macros
     // fazer operações sequênciais, 5 + 5 + 10
     if (resultado.innerText == '0') {
         resultado.innerHTML = ''
@@ -165,7 +164,13 @@ function calculadora(x) {
     }
 
     if (x == 'mr' && m == 1) {
-        resultado.innerHTML = macro
+        if(String(macro).length >= 13){
+            resultado.style.fontSize = '1.6em'
+            resultado.innerHTML = macro
+        } else {
+            resultado.innerHTML = macro
+        }
+        
     } else if (x == 'mr' && resultado.innerHTML == 0) {
         resultado.innerHTML = 0
     }
@@ -207,7 +212,7 @@ function calculadora(x) {
         }
     }
 
-    if (resultado.innerHTML.indexOf('.') == -1) {
+    if (resultado.innerHTML.indexOf('.') == -1 && resultado.innerHTML.indexOf('Infinity') == -1) {
         virgula()
     }
 
@@ -355,32 +360,30 @@ function calcResult() {
             historico.innerHTML += ' ='
             cont = 2
         }
-    }    
-
-    if (String(varResult).length >= 15) {
-        resultado.innerHTML = varResult
-        resultado.style.fontSize = '1.6em'         
-        if (String(varResult).length >= 17 && varResult >= 10) {
-            resultado.innerHTML = varResult.toExponential()
-        }      
-    }
-    else {
-        resultado.innerHTML = varResult
-        if (resultado.innerHTML.indexOf('.') == -1) {
-            virgula()
-        }
     }
 
-    
+    // Manipula o Resultado
+    resultado.innerHTML = varResult
+    virgula()
 
-    if (resultado.innerHTML.indexOf('.') == -1) { // quando não tem ponto executa virgula
-        virgula()      
-    } else {
-        
+    if (String(varResult).length >= 13) {
+        resultado.style.fontSize = '1.6em'
+    }
+
+    resultado.innerHTML = varResult
+    if (resultado.innerHTML.indexOf('.') != -1 && resultado.innerHTML.indexOf('e') == -1) {
         partInt = Math.floor(varResult)
         decimal = (varResult - partInt) * 10
-        resultado.innerHTML = partInt 
-        virgula()        
-        resultado.innerHTML += '.' + String(decimal.toFixed(5)).replaceAll('.','')        
+        resultado.innerHTML = partInt
+        virgula()
+        resultado.innerHTML += '.' + String(decimal.toFixed(5)).replaceAll('.', '')
+    } else if (String(resultado.innerHTML.length) >= 17) {
+        resultado.innerHTML = varResult.toExponential()
+    } else {
+        virgula()
+    }
+
+    if (resultado.innerHTML == 'In,fin,ity') {
+        resultado.innerHTML = 'Infinity'
     }
 }
