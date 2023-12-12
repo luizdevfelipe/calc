@@ -164,13 +164,13 @@ function calculadora(x) {
     }
 
     if (x == 'mr' && m == 1) {
-        if(String(macro).length >= 13){
+        if (String(macro).length >= 13) {
             resultado.style.fontSize = '1.6em'
             resultado.innerHTML = macro
         } else {
             resultado.innerHTML = macro
         }
-        
+
     } else if (x == 'mr' && resultado.innerHTML == 0) {
         resultado.innerHTML = 0
     }
@@ -244,17 +244,20 @@ function calculadora(x) {
     }
     if (x == 'pot') {
         operacao = 'pot'
-        cont = 1
+        cont = 0
         calcResult()
     }
     if (x == 'raiz') {
         operacao = 'raiz'
-        cont = 1
+        cont = 0
         calcResult()
     }
     if (x == '+-') {
-        operacao = '+-'
-        calcResult()
+        resultado.innerHTML = Number(resultado.innerHTML.replaceAll(',', '')) * -1 
+        if (resultado.innerHTML.indexOf('.') == -1){   // usar o +/- depois de ter digitado 22222.5555
+            virgula()
+        }
+                      
     }
     if (x == '1x') {
         operacao = '1x'
@@ -350,11 +353,7 @@ function calcResult() {
         n1 = Number(resultado.innerHTML.replaceAll(',', ''))
         historico.innerHTML = `1/(${String(n1)})`
         varResult = 1 / n1
-    }
-    if (operacao == '+-') {
-        n1 = Number(resultado.innerHTML.replaceAll(',', ''))
-        varResult = n1 * -1
-    }
+    }    
     if (operacao == 'pot' || operacao == 'raiz') {
         if (cont == 1) {
             historico.innerHTML += ' ='
@@ -372,18 +371,38 @@ function calcResult() {
 
     resultado.innerHTML = varResult
     if (resultado.innerHTML.indexOf('.') != -1 && resultado.innerHTML.indexOf('e') == -1) {
-        partInt = Math.floor(varResult)
-        decimal = (varResult - partInt) * 10
+        
+        partInt = parseInt(varResult)
+        decimal = (varResult - partInt) * 10      
+        
+        if (partInt < 0 && decimal < 0){
+            decimal *= -1            
+        }
         resultado.innerHTML = partInt
         virgula()
-        resultado.innerHTML += '.' + String(decimal.toFixed(5)).replaceAll('.', '')
-    } else if (String(resultado.innerHTML.length) >= 17) {
+      
+        if (String(decimal).length < 5) {
+            resultado.innerHTML += '.' + String(decimal).replaceAll('.', '') 
+        } else {
+            resultado.innerHTML += '.' + String(decimal.toFixed(5)).replaceAll('.', '') 
+        }
+        
+        if (partInt == 0 && decimal < 0){
+            decimal /= 10
+            resultado.innerHTML =  String(decimal)
+        }
+
+    } else if (String(resultado.innerHTML).length > 16) {
         resultado.innerHTML = varResult.toExponential()
-    } else {
+    } else if (String(resultado.innerHTML).length < 17 && resultado.innerHTML.indexOf('e') != -1){
+        resultado.innerHTML = varResult
+    }
+    else {
         virgula()
     }
 
-    if (resultado.innerHTML == 'In,fin,ity') {
+    if (resultado.innerHTML == 'In,fin,ity' || resultado.innerHTML == '-In,fin,ity') {
         resultado.innerHTML = 'Infinity'
+        cont = 2
     }
 }
